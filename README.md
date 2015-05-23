@@ -19,25 +19,31 @@ remeber "for in" has bad performance then other loop statement, like for, while,
 
 ## Semicolon Insertion
 use
+```javascript
 return {
   status: true
 };
+```
 *instead*
+```javascript
 return
 {
   status: true
 };
-
+```
 use
+```javascript
 if (boo) {
   //to do
 }
+```
 *instead*
+```javascript
 if (boo)
 {
   //to do
 }
-
+```
 ## Basic “short circuting” with || (Logical OR)
 To set default values, instead of this:
 ```javascript
