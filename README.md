@@ -1,5 +1,6 @@
 # JavaScript-Tips
-JavaScript coding tips. Best practices for js coding.
+Best practices for js coding.
+
 
 ## be careful to use === or ==
 avoid coding like "if(a='hi')"
@@ -12,4 +13,42 @@ instead
 variblae === 'hello' or variblae == 'hello'
 
 
-## remeber "for in" has bad performance
+## "for in" is not a good choice
+remeber "for in" has bad performance then other loop statement, like for, while, do while.
+
+
+## Semicolon Insertion
+use
+return {
+  status: true
+};
+*instead*
+return
+{
+  status: true
+};
+
+use
+if (boo) {
+  //to do
+}
+*instead*
+if (boo)
+{
+  //to do
+}
+
+## Basic “short circuting” with || (Logical OR)
+To set default values, instead of this:
+
+  function documentTitle(theTitle) {
+	  if (!theTitle) {
+	    theTitle  = "Untitled Document";
+	  }
+	}
+
+Use this:
+
+	function documentTitle(theTitle) {
+	  theTitle  = theTitle || "Untitled Document";
+	}
