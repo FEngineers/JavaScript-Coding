@@ -40,15 +40,16 @@ if (boo)
 
 ## Basic “short circuting” with || (Logical OR)
 To set default values, instead of this:
-
-  function documentTitle(theTitle) {
-	  if (!theTitle) {
-	    theTitle  = "Untitled Document";
-	  }
-	}
-
+```javascript
+function documentTitle(theTitle) {
+  if (!theTitle) {
+    theTitle  = "Untitled Document";
+  }
+}
+```
 Use this:
-
-	function documentTitle(theTitle) {
-	  theTitle  = theTitle || "Untitled Document";
-	}
+```javascript
+function documentTitle(theTitle) {
+  theTitle  = theTitle || "Untitled Document";
+}
+```
