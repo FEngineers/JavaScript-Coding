@@ -66,6 +66,7 @@ There is no block scope in js, we should declare variables at the beginning of f
 # References
 ### Books
 JavaScript: The Good Parts
+
 编写高质量代码:改善JavaScript程序的188个建议
 
 ### Articles
