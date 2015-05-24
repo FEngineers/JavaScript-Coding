@@ -22,7 +22,7 @@ return {
   status: true
 };
 ```
-*instead*
+instead
 ```javascript
 return
 {
@@ -35,7 +35,7 @@ if (boo) {
   //to do
 }
 ```
-*instead*
+instead
 ```javascript
 if (boo)
 {
@@ -82,6 +82,26 @@ function Person(name){
 }
 ```
 
+### Set default value in prototype instead in controller
+user
+```javascript
+function Car(t) {
+  if(t) {
+    this.type = t;
+  }
+}
+Car.prototype.type = 'gasoline';
+```
+instead
+```javascript
+function Car(t) {
+  if(t) {
+    this.type = t;
+  } else {
+    this.type = 'gasoline';
+  }
+}
+```
 
 # Thanks
 ### Books
