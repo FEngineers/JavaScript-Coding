@@ -59,3 +59,7 @@ function documentTitle(theTitle) {
   theTitle  = theTitle || "Untitled Document";
 }
 ```
+
+
+# References
+[12 Simple (Yet Powerful) JavaScript Tips](http://javascriptissexy.com/12-simple-yet-powerful-javascript-tips/)
