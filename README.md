@@ -83,7 +83,7 @@ function Person(name){
 ```
 
 ### Set default value in prototype instead in controller
-user
+use
 ```javascript
 function Car(t) {
   if(t) {
