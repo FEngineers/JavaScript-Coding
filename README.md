@@ -60,6 +60,9 @@ function documentTitle(theTitle) {
 }
 ```
 
+## Block Scope
+There is no block scope in js, we should declare variables at the beginning of function instead in the if statement or loop statement.
 
 # References
+JavaScript: The Good Parts
 [12 Simple (Yet Powerful) JavaScript Tips](http://javascriptissexy.com/12-simple-yet-powerful-javascript-tips/)
