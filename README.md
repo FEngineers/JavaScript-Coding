@@ -62,10 +62,32 @@ function documentTitle(theTitle) {
 ### Block Scope
 There is no block scope in js, we should declare variables at the beginning of function instead in the if statement or loop statement.
 
+### Don't put method in Constructor, defined methods in prototype.
+use
+```javascript
+function Person(name){
+  this.name = name;
+}
+Person.prototype.sayHi = function () {
+  alert('Hello ' + this.name);
+}
+```
+instead
+```javascript
+function Person(name){
+  this.name = name;
+  this.sayHi = function () {
+    alert('Hello ' + this.name);
+  }
+}
+```
 
-# References
+
+# Thanks
 ### Books
 JavaScript: The Good Parts
+
+Professional JavaScript for Web Developers
 
 编写高质量代码:改善JavaScript程序的188个建议
 
