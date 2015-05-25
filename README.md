@@ -1,5 +1,5 @@
 # JavaScript-Tips
-How to write good javascript code.
+How to write good javascript code. Best practices for JavaScript coding.
 
 ### be careful to use === or ==
 avoid coding like "if(a='hi')"
@@ -113,3 +113,6 @@ Professional JavaScript for Web Developers
 
 ### Articles
 [12 Simple (Yet Powerful) JavaScript Tips](http://javascriptissexy.com/12-simple-yet-powerful-javascript-tips/)
+[JavaScript language advanced Tips & Tricks](https://code.google.com/p/jslibs/wiki/JavascriptTips)
+[JavaScript and CSS guidelines for pragmatists](https://github.com/stevekwan/best-practices)
+[Some HTML, CSS and JS best practices](https://github.com/bendc/frontend-guidelines)
