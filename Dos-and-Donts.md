@@ -43,7 +43,7 @@ if (boo)
 }
 ```
 
-### in length in for loop
+### length in for loop
 use
 ```javascript
 for(var x=0, len = chocolatebars.length ; x < len; x++){
