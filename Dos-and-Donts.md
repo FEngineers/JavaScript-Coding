@@ -43,6 +43,18 @@ if (boo)
 }
 ```
 
+### in length in for loop
+use
+```javascript
+for(var x=0, len = chocolatebars.length ; x < len; x++){
+}
+```
+instead
+```javascript
+for(var x=0; x < chocolatebars.length; x++){
+}
+```
+
 ### Basic “short circuting” with || (Logical OR)
 To set default values, instead of this:
 ```javascript
