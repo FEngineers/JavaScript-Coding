@@ -1,4 +1,5 @@
-# JavaScript-Tips
+# Dos and Donts in JavaScript
+
 How to write good javascript code. Best practices for JavaScript coding.
 
 ### be careful to use === or ==
@@ -92,6 +93,23 @@ function Person(name){
     alert('Hello ' + this.name);
   }
 }
+```
+
+### Pass object as parameters instead one by one
+If we pass object as parameters, it will be not necessary to consider the parameter order, and we can pass some must parameters and set some pameter as default value.
+Do
+```javascript
+var myObject = maker({
+  first: f,
+  middle: m,
+  last: l,
+  state: s,
+  city: c
+});
+```
+Dont
+```javascript
+var myObject = maker(f, l, m, c, s);
 ```
 
 ### Set default value in prototype instead in controller
