@@ -11,6 +11,8 @@ appendChild
 
 
 ### Find/Search
+querySelector
+
 getElementById
 
 getElementsByTagName
