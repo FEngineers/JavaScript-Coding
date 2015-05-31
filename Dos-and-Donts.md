@@ -97,6 +97,7 @@ function Person(name){
 
 ### Pass object as parameters instead one by one
 If we pass object as parameters, it will be not necessary to consider the parameter order, and we can pass some must parameters and set some pameter as default value.
+
 Do
 ```javascript
 var myObject = maker({
