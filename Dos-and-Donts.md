@@ -56,6 +56,19 @@ for(var x=0; x < chocolatebars.length; x++){
 }
 ```
 
+### If Boolean
+if we want to validate a property whether in a project, we should now use
+```javascript
+if (person.age) {
+}
+```
+we should use
+```javascript
+if (person.hasOwnProperty('age')) {
+}
+```
+Reason: if statement return true, if the value is object, not empty string, not zero number, or ture. Return false, when the value is null, undefined, 0, false, NaN or empty string.
+
 ### Basic “short circuting” with || (Logical OR)
 To set default values, instead of this:
 ```javascript
