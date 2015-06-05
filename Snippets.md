@@ -14,7 +14,6 @@ window.clearInterval(id);
 ```javascript
 function analysisURLParameters() {
   var url = location.search;
-  console.log('url', url);
   var theRequest = new Object();
   if (url.indexOf("?") != -1) {
     var str = url.substr(1);
