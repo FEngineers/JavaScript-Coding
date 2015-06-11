@@ -4,13 +4,17 @@ Coding with JavaScript and the Document Object Model
 # DOM-Scripting
 
 
-### Create/Insert
+### Create/Insert/
 createElement
 
 appendChild
 
 
-### Find/Search
+### Delete/Remove
+removeChild
+
+
+### Find/Search/Retrieve
 querySelector
 
 getElementById
