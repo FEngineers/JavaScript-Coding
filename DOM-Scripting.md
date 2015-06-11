@@ -9,6 +9,22 @@ createElement
 
 appendChild
 
+createTextNode
+
+cloneNode
+
+var doc = (new DOMParser()).parseFromString(text)
+
+insertAdjacentHTML
+
+insertAdjacentText
+
+innerHTML
+
+innerText
+
+createDocumentFragment
+
 
 ### Delete/Remove
 removeChild
