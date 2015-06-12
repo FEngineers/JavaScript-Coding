@@ -25,3 +25,14 @@ function analysisURLParameters() {
   return theRequest;
 }
 ```
+
+### Add Event Listener
+```javascript
+function attachEvent(element, type, fn) {
+    if (element.addEventListener) {
+        element.addEventListener(type, fn, false);
+    } else if (element.attachEvent) {
+        element.attachEvent('on' + type, fn);
+    }
+}
+```
