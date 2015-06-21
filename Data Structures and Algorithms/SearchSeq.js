@@ -6,6 +6,3 @@ function seqSearch (arr, data) {
     }
   }
 }
-
-
-seqSearch(fruits, 'apple');
