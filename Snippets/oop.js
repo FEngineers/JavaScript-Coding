@@ -1,9 +1,14 @@
 /**
  * Object Oriented Programming
  *
- * Foundation: Basic Knowledge about Object in JavaScript, includes how to create object, how to manage properties
+ * => Foundation: Basic Knowledge about Object in JavaScript, includes how to create object, how to manage properties
  *
- * Inheritance
+ * => Important Method:
+ * Function.prototype.call()
+ * Function.prototype.apply()
+ * Function.prototype.bind()
+ *
+ * => Inheritance
  *
  *
  *
@@ -106,6 +111,72 @@
   console.log('propertiesEnumerable:', propertiesEnumerable);
 
 }());
+
+
+/**
+ * 1. Function.prototype.call()
+ *
+ * The call() method calls a function with a given this value and arguments provided individually.
+ *
+ *
+ *
+ * 2. Function.prototype.apply()
+ *
+ * The apply() method calls a function with a given this value and arguments provided as an array (or an array-like object).
+ *
+ *
+ *
+ * 3. Function.prototype.bind()
+ *
+ * The bind() method creates a new function that, when called, has its this keyword set to the provided value,
+ * with a given sequence of arguments preceding any provided when the new function is called.
+ *
+ */
+(function () {
+  console.log('******Call and Apply******');
+  var result, boundAdd;
+
+  var one = {
+    value: 1
+  };
+
+  var two = {
+    value: 2
+  };
+
+  var three = {
+    value: 3
+  };
+
+  function add (increment, other) {
+    return this.value + increment + (other || 0);
+  }
+
+  result = add.call(one, 1);
+  console.log('add.call(one, 1):', result);
+
+  result = add.call(two, 1, 2);
+  console.log('add.call(two, 1, 2):', result);
+
+  result = add.apply(one, [3]);
+  console.log('add.apply(one, [3]):', result);
+
+  result = add.apply(two, [3, 4]);
+  console.log('add.apply(two, [3, 4]):', result);
+
+
+
+  boundAdd = add.bind(three, 6, 8);
+  result = boundAdd();
+  console.log('boundAdd():', result);
+
+  result = boundAdd.call(two, 1, 2);
+  console.log('boundAdd.call(two, 1, 2):', result);
+
+  result = boundAdd.apply(one, [3]);
+  console.log('boundAdd.apply(one, [3]):', result);
+}());
+
 
 
 /**
