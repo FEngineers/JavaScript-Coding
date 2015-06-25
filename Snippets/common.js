@@ -14,6 +14,25 @@ function randomANumber(n) {
 }
 
 /**
+ * Extend
+ * Sometimes also call it Mixins
+ *
+ * Basically, what extend does here is taking two objects — a source and a target,
+ * — iterating over all properties present on the source object, and copying the property descriptors over to target.
+ */
+function extend(target, source) {
+  var descriptor  = Object.getOwnPropertyDescriptor,
+    properties  = Object.getOwnPropertyNames,
+    define_prop = Object.defineProperty;
+
+  properties(source).forEach(function(key) {
+    define_prop(target, key, descriptor(source, key));
+  });
+
+  return target
+}
+
+/**
  * analysis URL Search Parameters
  *
  * The URLUtils.search property is a DOMString containing a '?' followed by the parameters of the URL.

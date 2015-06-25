@@ -3,6 +3,8 @@
  *
  * => Foundation: Basic Knowledge about Object in JavaScript, includes how to create object, how to manage properties
  *
+ * => Prototype
+ *
  * => Important Method:
  * Function.prototype.call()
  * Function.prototype.apply()
@@ -20,28 +22,7 @@
 (function () {
   console.log('******Foundation******');
 
-  //Create Object
-  var man = Object.create(null);
-
-  //Define multiple properties use one method
-  Object.defineProperties(man, {
-    color: {
-      value: 'Yellow',
-      writable: true,
-      configurable: true,
-      enumerable: true
-    },
-    language: {
-      value: 'Chinese',
-      writable: true,
-      configurable: true,
-      enumerable: true
-    }
-  });
-
-  //Create Child Object by pass an object as parent
-  var user = Object.create(man);
-  console.log('user color:', user.color);
+  var user = Object.create(null);
 
   //Define one property
   Object.defineProperty(user, 'firstName', {
@@ -90,9 +71,10 @@
   //    console.log(this.firstName + ' says 您好 to world!');
   //  }
   //});
-  function sayHello () {
-    console.log(this.name + ' says 您好 to world!');
+  function sayHello (person) {
+    console.log(this.name + ' says 您好 to ' + person);
   };
+
   Object.defineProperty(user, 'sayHello', {
     value: sayHello,
     writable: true,
@@ -101,7 +83,7 @@
   });
 
 
-  user.sayHello();
+  user.sayHello('JavaScript');
 
   //Listing properties
   var propertiesAllOwn = Object.getOwnPropertyNames(user);
@@ -133,7 +115,7 @@
  *
  */
 (function () {
-  console.log('******Call and Apply******');
+  console.log('******Call Apply Bind******');
   var result, boundAdd;
 
   var one = {
@@ -177,7 +159,143 @@
   console.log('boundAdd.apply(one, [3]):', result);
 }());
 
+/**
+ * Prototype
+ */
+(function () {
+  console.log('******Prototype******');
 
+  //Create Object
+  var man = Object.create(null);
+
+  //Define multiple properties use one method
+  Object.defineProperties(man, {
+    color: {
+      value: 'Yellow',
+      writable: true,
+      configurable: true,
+      enumerable: true
+    },
+    language: {
+      value: 'Chinese',
+      writable: true,
+      configurable: true,
+      enumerable: true
+    }
+  });
+
+  //Create Child Object by pass an object as parent
+  var steven = Object.create(man);
+  console.log('user color:', steven.color);
+
+  steven.name = 'Steven';
+
+  man.hi = function (person) {
+    console.log(this.name + ': hi ' + (person || 'Parents'));
+  };
+
+  steven.hi();
+
+  steven.hi = function(person) {
+    console.log(this.name + ': hello ' + (person || 'World'));
+  };
+
+  var yinfeng = Object.create(man);
+  yinfeng.name = 'Yinfeng';
+  yinfeng.hi = function(person) {
+    console.log(this.name + ': 您好 ' + (person || 'China'));
+  };
+
+  steven.hi(yinfeng.name)
+
+  steven.hi()
+
+  yinfeng.hi(steven.name)
+
+  delete yinfeng.hi
+
+  yinfeng.hi(steven.name)
+}());
+
+/**
+ * Mixins
+ */
+(function () {
+  console.log('******Mixins******');
+
+  // Aliases for the rather verbose methods on ES5
+  var descriptor  = Object.getOwnPropertyDescriptor,
+    properties  = Object.getOwnPropertyNames,
+    define_prop = Object.defineProperty;
+
+  // (target:Object, source:Object) → Object
+  // Copies properties from `source' to `target'
+  function extend(target, source) {
+    properties(source).forEach(function(key) {
+      define_prop(target, key, descriptor(source, key)) });
+
+    return target
+  }
+
+  //Create Object
+  var man = Object.create(null);
+
+  //Define multiple properties use one method
+  Object.defineProperties(man, {
+    color: {
+      value: 'Yellow',
+      writable: true,
+      configurable: true,
+      enumerable: true
+    },
+    language: {
+      value: 'Chinese',
+      writable: true,
+      configurable: true,
+      enumerable: true
+    }
+  });
+
+  //Create Child Object by pass an object as parent
+  var steven = Object.create(man);
+  steven.name = 'Steven';
+
+  var yinfeng = Object.create(man);
+  yinfeng.name = 'Yinfeng';
+
+
+// A pianist is someone who can `play' the piano
+  var pianist = Object.create(null)
+  pianist.play = function() {
+    console.log(this.name + ' starts playing the piano.');
+  }
+
+  // A singer is someone who can `sing'
+  var singer = Object.create(null)
+  singer.sing = function() {
+    console.log(this.name + ' starts singing.');
+  }
+
+  // Then we can move on to adding those abilities to our main objects:
+  extend(steven, pianist);
+  steven.play();
+
+  // We can see that all that ends up as an own property of steven. It is not shared.
+  console.log('Object.keys(steven):', Object.keys(steven));
+
+  // Then we can define yinfeng as a singer
+  extend(yinfeng, singer);
+  yinfeng.sing();
+
+  // steven can't sing yet though
+  //steven.sing()
+  // => TypeError: Object #<Object> has no method 'sing'
+
+  // But steven will inherit the `sing' method if we extend the Man prototype with it:
+  extend(man, singer)
+
+  steven.sing()
+}());
 
 /**
  * Inheritance
@@ -198,4 +316,7 @@
 
   delete childClass.name;
   console.log('child name 3:', childClass.name);
+
+
+
 }());
