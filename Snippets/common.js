@@ -72,3 +72,13 @@ function attachEvent(element, type, fn) {
     element.attachEvent('on' + type, fn);
   }
 }
+
+/**
+ * sortBy
+ *
+ * @param obj
+ * @param key
+ */
+function sortBy (obj, key) {
+
+}

@@ -298,6 +298,122 @@
 }());
 
 /**
+ * Super
+ *
+ * Accessing overwritten properties
+ *
+ * Object.getPrototypeOf()
+ * The Object.getPrototypeOf() method returns the prototype (i.e. the value of the internal [[Prototype]] property) of the specified object.
+ *
+ */
+(function () {
+  console.log('******Super******');
+  //Create Object
+  var man = Object.create(null);
+
+  //Define multiple properties use one method
+  Object.defineProperties(man, {
+    color: {
+      value: 'Yellow',
+      writable: true,
+      configurable: true,
+      enumerable: true
+    },
+    language: {
+      value: 'Chinese',
+      writable: true,
+      configurable: true,
+      enumerable: true
+    }
+  });
+
+  //Create Child Object by pass an object as parent
+  var steven = Object.create(man);
+  steven.name = 'Steven';
+
+  var yinfeng = Object.create(man);
+  yinfeng.name = 'Yinfeng';
+
+  man.hi = function (person) {
+    return this.name + ': hi ' + (person || 'Parents');
+  };
+
+  var proto = Object.getPrototypeOf;
+  steven.hi = function(name) {
+    return name == 'Yinfeng'?  this.name + ': Hello, feng' : proto(this).hi.call(this, name)
+  };
+
+
+  var result = steven.hi(yinfeng.name);
+  console.log('steven.hi(yinfeng.name):', result);
+
+  result = steven.hi('Michale');
+  console.log('steven.hi(\'Michale\'):', result);
+
+
+
+
+  function make_method(object, fun) {
+    return function() {
+      var args;
+      args = Array.prototype.slice.call(arguments);
+      args.unshift(object);        // insert `object' as first parameter
+      fun.apply(this, args);
+    }
+  }
+
+
+  // Now, all functions that are expected to be used as a method
+  // should remember to reserve the first parameter to the object
+  // where they're stored.
+  //
+  // Note that, however, this is a magical parameter introduced
+  // by the method function, so any function calling the method
+  // should pass only the usual arguments.
+  function message(self, message) {
+    var parent;
+    parent = Object.getPrototypeOf(self);
+    if (parent && parent.log)
+      parent.log.call(this, message);
+
+    console.log('-- At ' + self.name);
+    console.log(this.name + ': ' + message);
+  }
+
+  // Here we define a prototype chain C -> B -> A
+  var A  = Object.create(null);
+  A.name = 'A';
+  A.log  = make_method(A, message);
+
+  var B  = Object.create(A);
+  B.name = 'B';
+  B.log  = make_method(B, message);
+
+  var C  = Object.create(B);
+  C.name = 'C';
+  C.log  = make_method(C, message);
+
+  // And we can test if it works by calling the methods:
+  A.log('foo');
+  // => '-- At A'
+  // => 'A: foo'
+
+  B.log('foo');
+  // => '-- At A'
+  // => 'B: foo'
+  // => '-- At B'
+  // => 'B: foo'
+
+  C.log('foo');
+  // => '-- At A'
+  // => 'C: foo'
+  // => '-- At B'
+  // => 'C: foo'
+  // => '-- At C'
+  // => 'C: foo'
+}());
+
+/**
  * Inheritance
  *
  * Born from one parent by using Object.create(parentObj);
