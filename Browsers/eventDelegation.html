@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <ul id="myJobs">
+    <li id="eleme">饿了么</li>
+    <li id="jxb">教学邦</li>
+    <li id="caijing">财鲸</li>
+  </ul>
+
+<script>
+  document.getElementById('myJobs').addEventListener('click', function (event) {
+    var e = event || window.event;
+    var target = e.target || e.srcElement;
+    console.log(target);
+    console.log(target.nodeName);
+    console.log(target.id);
+
+    if (target.id === 'eleme') {
+      alert('顺利能进！！！');
+    }
+  }, false);
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #products {
+      background-color: #333333;
+      /*overflow: auto;*/
+      font-size: 0;
+      border: 1px solid;
+      border-color: red;
+    }
+
+    #products:after {
+      content: "020";
+      display: block;
+      height: 0;
+      clear: both;
+    }
+    #products li {
+      width: 100px;
+      height: 100px;
+      background-color: #eee;
+      list-style: none;
+      display: inline-block;
+      font-size: 32px;
+      float: left;
+      /*border: 1px solid green;*/
+      /*line-height: 32px;*/
+    }
+  </style>
+</head>
+<body>
+  <ul id="products">
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,43 @@
+
+<script type="text/javascript">
+  //※※※※※※※※※※※测试1※※※※※※※※※※※※※※
+  function test(){
+    alert(arguments)
+    arguments = Array.prototype.slice.call(arguments);
+    alert(arguments instanceof Array);
+    alert(arguments)
+  }
+  test(1,2,3,4);
+
+  //※※※※※※※※※※※测试2※※※※※※※※※※※※※※
+  var htmlcollection = document.getElementsByTagName("h3");
+  alert(htmlcollection)
+  try{
+    htmlcollection = Array.prototype.slice.call(htmlcollection);
+    alert(htmlcollection instanceof Array);
+    alert(htmlcollection);
+  }catch(e){
+    alert(e)
+  }
+  //※※※※※※※※※※※测试3※※※※※※※※※※※※※※
+  var sheets = document.styleSheets;
+  alert(sheets)
+  try{
+    sheets = Array.prototype.slice.call(sheets);
+    alert(sheets instanceof Array);
+    alert(sheets);
+  }catch(e){
+    alert(e)
+  }
+  //※※※※※※※※※※※测试4※※※※※※※※※※※※※※
+  var arrayLike = {
+    0 : '司徒正美',
+    1 : '司徒正美',
+    2 : '司徒正美',
+    length : 3
+  };
+  alert(arrayLike)
+  arrayLike = Array.prototype.slice.call(arrayLike);
+  alert(arrayLike instanceof Array);
+  alert(arrayLike);
+</script>
